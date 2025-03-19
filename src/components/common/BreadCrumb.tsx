@@ -14,7 +14,7 @@ export default function BreadCrumb({ category, crumb }: BreadCrumbProps) {
     : "";
 
   return (
-    <div className="flex justify-start text-sm breadcrumbs">
+    <div className="text-sm breadcrumbs">
       <ul>
         <li>{categoryFilter}</li>
         <li>{crumbFilter}</li>
