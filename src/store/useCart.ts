@@ -19,7 +19,6 @@ export function useCart() {
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
-    console.log("카드에 상품 추가");
   };
 
   return { cart, addCart };

@@ -32,7 +32,6 @@ export default function ProductsView() {
   useEffect(() => {
     if (id && products.length > 0) {
       const foundProduct = products.find((p) => p.id === Number(id));
-      console.log(foundProduct);
       setProduct(foundProduct || null);
     }
   }, [id, products]);
@@ -55,7 +54,6 @@ export default function ProductsView() {
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
-    console.log("카드에 상품 추가");
   };
 
   useEffect(() => {
@@ -63,7 +61,7 @@ export default function ProductsView() {
   }, [cart]);
 
   return (
-    <div>
+    <div className="lg:mx-36 mx-auto">
       <BreadCrumb category={productCategoryKorean} crumb={product?.title} />
       <div className="lg:flex lg:items-center mt-6 md:mt-14 px-2 lg:px-0">
         <figure className="flex-shrink-0 rounded-2xl overflow-hidden px-4 py-4 bg-white view_image">
