@@ -15,11 +15,11 @@ export const MENUS = {
 // export const CART_ITEM = "CART_ITEM";
 
 export interface CART_ITEM {
-  id: number; // 상품 ID
-  title: string; // 상품 이름
-  price: number; // 가격
-  image: string; // 이미지 URL
-  quantity: number; // 수량
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+  quantity: number;
 }
 
 // type categoryType = (typeof Category)[keyof typeof Category];
