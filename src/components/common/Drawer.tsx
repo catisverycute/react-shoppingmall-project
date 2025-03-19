@@ -32,22 +32,20 @@ export default function Drawer({ inputValue }: SearchProps) {
   };
 
   return (
-    <div className="absolute">
-      <ul className="!fixed  left-auto sm:absolute sm:top-14 menu flex-nowrap w-full dropdown-content sm:w-64 max-h-96 shadow text-base-content overflow-y-auto overflow-x-hidden bg-white dark:bg-gray-600">
-        <li>
-          {filteredProducts.map((p) => (
-            <button
-              type="button"
-              className="text-left js-searchedItem"
-              onClick={() => clickBtn(p.id)}
-            >
-              <span className="text-gray-600 dark:text-white line-clamp-2 ">
-                {p.title}
-              </span>
-            </button>
-          ))}
-        </li>
-      </ul>
-    </div>
+    <ul className="absolute top-full left-0 w-full sm:absolute sm:top-12  flex-nowrap  dropdown-content sm:w-64 max-h-96 shadow text-base-content overflow-y-auto overflow-x-hidden bg-white dark:bg-gray-600 z-50">
+      <li>
+        {filteredProducts.map((p) => (
+          <button
+            type="button"
+            className="text-left js-searchedItem px-4 py-2 hover:bg-gray-500 w-full flex items-start"
+            onClick={() => clickBtn(p.id)}
+          >
+            <span className="text-gray-600 dark:text-white line-clamp-2 ">
+              {p.title}
+            </span>
+          </button>
+        ))}
+      </li>
+    </ul>
   );
 }
