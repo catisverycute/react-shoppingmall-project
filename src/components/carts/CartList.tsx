@@ -46,7 +46,7 @@ const CartList = (): JSX.Element => {
         <div className="lg:flex lg:items-center mt-4 px-2 lg:px-0">
           <Link to={`/product/${items.id}`}>
             <figure className="w-56 min-w-full shrink-0 rounded-2xl overflow-hidden px-4 py-4 bg-white">
-              <img src={items.image} />
+              <img src={items.image} className="object-contain w-full h-48" />
             </figure>
           </Link>
           <div className="card-body px-1 lg:px-12">
@@ -55,30 +55,31 @@ const CartList = (): JSX.Element => {
                 {items.title}
               </Link>
             </h2>
-            <p className="mt-2 mb-4 text-3xl">
+            <p className="flex items-start mt-2 mb-4 text-3xl">
               {formattedProductPrice}
               <span className="text-2xl pl-2">{`(${toCurrencyFormat(
                 items.price
               )})`}</span>
             </p>
-          </div>
-          <div className="card-actions">
-            <div className="btn-group">
-              <button
-                className="btn btn-primary"
-                onClick={() => deleteCart(items.id)}
-              >
-                -
-              </button>
-              <button className="btn btn-ghost animate-none">
-                {items.quantity}
-              </button>
-              <button
-                className="btn btn-primary"
-                onClick={() => addCart(items.id)}
-              >
-                +
-              </button>
+
+            <div className="card-actions">
+              <div className="btn-group">
+                <button
+                  className="btn btn-primary"
+                  onClick={() => deleteCart(items.id)}
+                >
+                  -
+                </button>
+                <button className="btn btn-ghost animate-none">
+                  {items.quantity}
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => addCart(items.id)}
+                >
+                  +
+                </button>
+              </div>
             </div>
           </div>
         </div>
