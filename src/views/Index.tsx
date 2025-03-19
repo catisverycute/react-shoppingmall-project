@@ -11,7 +11,7 @@ const Index = (): JSX.Element => {
       {category.map((idx) => (
         <section
           key={idx}
-          className="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto"
+          className="pt-6 lg:pt-12 pb-6 lg:pb-12 px-4 xl:px-2 xl:container mx-auto"
         >
           <ItemList productTitle={idx} />
         </section>
