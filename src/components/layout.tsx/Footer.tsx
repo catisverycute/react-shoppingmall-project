@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import facebook from "../../public/svg/facebook.svg";
+import facebookDark from "../../public/svg/facebookDark.svg";
 import instagram from "../../public/svg/instagram.svg";
+import instagramDark from "../../public/svg/instagramDark.svg";
 import github from "../../public/svg/github.svg";
+import githubDark from "../../public/svg/githubDark.svg";
 import visa from "../../public/svg/visa.svg";
 import master from "../../public/svg/mastercard.svg";
 import amex from "../../public/svg/amex.svg";
@@ -50,7 +53,16 @@ const Footer: React.FC = () => {
           data-tip="facebook"
           className="tooltip"
         >
-          <img src={facebook} alt="facebook" className="w-6" />
+          <img
+            src={facebook}
+            alt="facebook"
+            className="w-6 block dark:hidden"
+          />
+          <img
+            src={facebookDark}
+            alt="facebook"
+            className="w-6 hidden dark:block"
+          />
         </Link>
         <Link
           to="https://www.instagram.com/zerobase.official/#"
@@ -59,7 +71,16 @@ const Footer: React.FC = () => {
           data-tip="instagram"
           className="tooltip"
         >
-          <img src={instagram} alt="instagram" className="w-6" />
+          <img
+            src={instagram}
+            alt="instagram"
+            className="w-6 block dark:hidden"
+          />
+          <img
+            src={instagramDark}
+            alt="instagram"
+            className="w-6  hidden dark:block"
+          />
         </Link>
         <Link
           to="https://github.com/catisverycute"
@@ -68,7 +89,12 @@ const Footer: React.FC = () => {
           data-tip="github"
           className="tooltip"
         >
-          <img src={github} alt="github" className="w-6" />
+          <img src={github} alt="github" className="w-6 block dark:hidden" />
+          <img
+            src={githubDark}
+            alt="github"
+            className="w-6  hidden dark:block"
+          />
         </Link>
       </div>
       <div>
