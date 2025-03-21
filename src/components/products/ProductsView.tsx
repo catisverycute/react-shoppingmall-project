@@ -41,23 +41,28 @@ export default function ProductsView() {
   const addCart = () => {
     if (!product) return;
 
-    const findProduct = cart.find((item) => item.id === product.id);
+    const currentCart = Array.isArray(cart) ? cart : [];
+    const findProduct = currentCart.find((item) => item.id === product.id);
 
     if (findProduct) {
       setCart(
-        cart.map((item) =>
+        currentCart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         )
       );
     } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
+      setCart([...currentCart, { ...product, quantity: 1 }]);
     }
   };
-
   useEffect(() => {
-    localStorage.setItem("cart_item", JSON.stringify(cart));
+    if (Array.isArray(cart)) {
+      localStorage.setItem("cart_item", JSON.stringify(cart));
+    } else {
+      console.warn(" cart가 배열이 아닙니다. 초기화합니다.");
+      localStorage.setItem("cart_item", JSON.stringify([]));
+    }
   }, [cart]);
 
   return (

@@ -33,8 +33,8 @@ const Nav: React.FC = () => {
     }
   }, [theme]);
 
-  const totalQuantity = cartValue.reduce(
-    (total, idx) => total + idx.quantity,
+  const totalQuantity = (cartValue || []).reduce(
+    (total, idx) => total + (idx.quantity || 0),
     0
   );
 

@@ -11,13 +11,17 @@ import { CART_ITEM } from "../../constants/constants";
 const CartView = (): JSX.Element => {
   const cart = useRecoilValue(cartState);
   const [cartItems, setCartItems] = useState<CART_ITEM[]>([]);
-
   useEffect(() => {
-    setCartItems(cart);
+    if (Array.isArray(cart)) {
+      setCartItems(cart);
+    } else {
+      console.warn("cartState가 배열이 아닙니다! 빈 배열로 변환합니다.", cart);
+      setCartItems([]);
+    }
   }, [cart]);
 
-  const totalPrice = cart.reduce(
-    (total, idx) => total + idx.quantity * idx.price,
+  const totalPrice = (cart || []).reduce(
+    (total, idx) => total + (idx.quantity || 0) * (idx.price || 0),
     0
   );
 
@@ -25,9 +29,16 @@ const CartView = (): JSX.Element => {
     const storedCart = localStorage.getItem("cart_item");
     if (storedCart) {
       try {
-        setCartItems(JSON.parse(storedCart));
+        const parsedCart = JSON.parse(storedCart);
+        if (Array.isArray(parsedCart)) {
+          setCartItems(parsedCart);
+        } else {
+          console.error("cart_item이 배열이 아닙니다:", parsedCart);
+          setCartItems([]);
+        }
       } catch (error) {
         console.error("장바구니 데이터를 불러오는 중 오류 발생:", error);
+        setCartItems([]);
       }
     }
   }, []);

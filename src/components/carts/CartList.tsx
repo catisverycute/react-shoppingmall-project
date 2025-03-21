@@ -8,15 +8,16 @@ const CartList = (): JSX.Element => {
   const cartItems = useRecoilValue(cartState);
   const setCart = useSetRecoilState(cartState);
 
-  const productPrice = cartItems.reduce(
+  const productPrice = (Array.isArray(cartItems) ? cartItems : []).reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
 
   const formattedProductPrice = toCurrencyFormat(productPrice);
+
   const addCart = (productId: number) => {
     setCart((prevCart) =>
-      prevCart.map((item) =>
+      (Array.isArray(prevCart) ? prevCart : []).map((item) =>
         item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
@@ -24,7 +25,7 @@ const CartList = (): JSX.Element => {
 
   const deleteCart = (productId: number) => {
     setCart((prevCart) =>
-      prevCart
+      (Array.isArray(prevCart) ? prevCart : [])
         .map((item) =>
           item.id === productId && item.quantity === 1
             ? null
